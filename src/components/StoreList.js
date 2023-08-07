@@ -1,31 +1,34 @@
 import React from "react"
 import Store from "./Store"
+import storeData from "./db.json"
 
-function StoreList() {
-
-
+function StoreList({newStoreData, sortShop}) {
     return(
-        <table>
+        <>
+         <table>
             <tbody>
                 <tr>
-                    <th className="row-name">
-                        Name
-                    </th>
-                    <th>
-                        Image
-                    </th>
-                    <th>
-                        Season
-                    </th>
-                    <th>
-                        Episode
-                    </th>
+                    <th className="row-name">Name</th>
+                    <th> Image </th>
+                    <th>Season</th>
+                    <th>Episode</th>
                 </tr>
-                {/** Render a list of <Store> components here. */}
+                {sortShop.map((store) => (
+                <tr key={store.id}>
+                <td>{store.name}</td>
+                <td>
+                    <img src = {store.image} alt={store.name}/>
+                </td>
+                <td>{store.season}</td>
+                <td>{store.episode}</td>
+                </tr>
+                ))}
+                {newStoreData}
             </tbody>
-        
-        </table>
-    );
-}
+        </table> 
+        </>
+    )}
 
 export default StoreList;
+             
+        
